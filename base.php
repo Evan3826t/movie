@@ -1,10 +1,23 @@
 <?php
 
 $dsn = "mysql:host=localhost;charset=utf8;dbname=s1080311";
-$pdo = new PDO($dsn, "s1080311", "s1080311");
+$pdo = new PDO($dsn, "root", "");
 
 session_start();
 
+$level=[
+    1=>["03C01.png","普遍級"],
+    2=>["03C02.png","保護級"],
+    3=>["03C03.png","輔導級"],
+    4=>["03C04.png","限制級"],
+];
+$sess=[
+    1=>"14:00-16:00",
+    2=>"16:00-18:00",
+    3=>"18:00-20:00",
+    4=>"20:00-22:00",
+    5=>"22:00-24:00"
+];
 
 // 查詢及取得特定條件的資料
 function find($table,...$arg){

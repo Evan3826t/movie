@@ -1,0 +1,79 @@
+body{
+    background:#484891;
+    font-family: var(--font-family-sans-serif), 'Microsoft JHengHei';
+}
+.carousel-item{
+    height: 700px;
+}
+.carousel-caption{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.object-fit{
+    object-fit: cover;
+    object-position: center;
+}
+
+.coffee>div:first-child {
+    height: 350px;
+}
+
+#footer i{
+    font-size: 24px;
+}
+
+#content{
+    min-height: calc(100vh - 50px - 75px);
+}
+
+#loading{
+    height: 100vh;
+    position: relative;
+    z-index: 99;
+
+}
+
+#content, #footer{
+    display: none;
+}
+
+@media (max-width: 576px){
+    .carousel-item{
+        height: 300px !important;
+    }
+}
+
+@media ( min-width: 768px){
+    .coffee:nth-child( even)>div:first-child{
+        order: 2;
+    }
+    .coffee:nth-child( even)>div:;ast-child{
+        order: 1;
+        text-align: right;
+    }
+}
+
+/* 手機瀏覽表格 */
+@media (max-width: 768px) {
+    .table td{
+        display: block;
+    }
+    .table tr{
+        display: block;
+        border: 1px solid black;
+    }
+    .table thead{
+        display: none;
+    }
+    .table tbody td:before{
+        content: attr(data-th) ":";
+        color: var(--primary);
+        font-weight: bold;
+    }
+}
+.card-img-top{
+    height: 200px;
+}
