@@ -26,7 +26,7 @@ for ($i=2; $i <= 12; $i++) {
     $d['len'] = rand(80,160);
     $d['poster'] = $i;
     $d['rank'] = $i;
-    $d['ondate'] =  date("Ymd",strtotime("- " . rand(0,3) . "days"));
+    $d['ondate'] =  date("Ymd",strtotime("+ " . rand(0,2) . "days"));
     save("movie",$d);
 }
 

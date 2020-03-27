@@ -37,7 +37,16 @@ include_once ("base.php");
                   <a class="nav-link text-white" href="./movie.php">電影</a>
                 </li>
               </ul>
-
+              <button class="btn btn-outline-success bg-dark" onclick="lof('?do=login')">登入</button>
+              <?php
+              if(!empty($_SESSION['user'])){
+                if($_SESSION['user'] == "admin"){
+                  ?>
+                    <button class="btn btn-outline-success bg-dark" onclick="lof('admin.php')">管理</button>
+                  <?php
+                }
+              }
+              ?>
             </div>
         </div>
       </nav>

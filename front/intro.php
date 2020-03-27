@@ -28,13 +28,25 @@ $movie=find("movie",$id);
             </div>
         </div>
         <div class="row" style="background:#7373B9">
-            <div class="col-12 col-md-6 my-4 text-white text-center">
-                    選擇場次
-                    <td><select name="session" id="session"></select></td>
-            </div>
-            <div class="col-12 col-md-6 my-4 text-white text-center">
-                <button type="button" class="btn btn-dark" id="send">查詢</button>
-            </div>
+            <?php
+              if($_GET['type']==1){
+                ?>
+                <div class="col-12 col-md-4 my-4 text-white text-center">
+                    選擇日期
+                    <td><select name="date" id="date"></select></td>
+                </div>
+                <div class="col-12 col-md-6 my-4 text-white text-center">
+                    <button type="button" class="btn btn-dark" id="send">查詢</button>
+                </div>
+                <?php
+              }else{
+                ?>
+                <div class="col-12  my-4 text-white text-center">
+                    尚未上映
+                </div>
+                <?php
+              }
+            ?>
         </div>
         <div class="col-12 my-3 text-white">
           <div class="load">
@@ -49,25 +61,20 @@ $movie=find("movie",$id);
 
         let url = new URL(location.href);
         let id = url.searchParams.get('id');
-        let date = url.searchParams.get('date');
+        let date = $("#date").val();
 
-        // 載入座位表
         $("#send").on("click",function(){
-          $("form").hide();
-          let session = $("#session").val();
-          $.get("./front/booking.php",{id,date,session},function(res){
-              $(".load").html(res);
-              console.log(res);
-          })
+            lof("?do=order&id="+id+"&date="+date);
         })
-        getSession(id,date);
-        // 抓電影場次
-        function getSession(id,date){
-          $.get("./api/getsession.php",{date,id},function(session){
-              $("#session").html(session);
-              console.log(session)
-          })
-        }
 
+        getDate(id);
+
+        // 抓電影上映日期
+        function getDate(id){
+            $.get("./api/getdate.php",{id},function(res){
+                $("#date").html(res);
+                let date = $("#date").val();
+            })
+        }    
       })
     </script>
