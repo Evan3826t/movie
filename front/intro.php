@@ -36,7 +36,7 @@ $movie=find("movie",$id);
                     <td><select name="date" id="date"></select></td>
                 </div>
                 <div class="col-12 col-md-6 my-4 text-white text-center">
-                    <button type="button" class="btn btn-dark" id="send">查詢</button>
+                    <button type="button" class="btn btn-dark" id="send">查詢時刻</button>
                 </div>
                 <?php
               }else{
@@ -61,9 +61,10 @@ $movie=find("movie",$id);
 
         let url = new URL(location.href);
         let id = url.searchParams.get('id');
-        let date = $("#date").val();
+        
 
         $("#send").on("click",function(){
+            let date = $("#date").val();
             lof("?do=order&id="+id+"&date="+date);
         })
 

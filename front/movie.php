@@ -44,4 +44,6 @@ foreach ($await as $k => $m) {
 </div>
 <script>
   $("#content").show();
+  $("#footer").show();
+
 </script>

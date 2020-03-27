@@ -15,7 +15,6 @@ include_once ("base.php");
     <link rel="shortcut icon" href="./images/favicon-20191209083958255.ico" type="image/x-icon">
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/wow.min.js"></script>
     <script src="./js/all.js"></script>
     <!-- Primary Meta Tags -->
 <title>電影院</title>
@@ -59,11 +58,11 @@ include_once ("base.php");
       
       <?php
       $do = (empty($_GET['do']))?"home":$_GET['do'];
-      $path = "./front/" . $do . ".php";
+      $path = "./admin/" . $do . ".php";
       if(file_exists($path)){
         include ($path);
       }else{
-        include ("./front/home.php");
+        include ("./admin/home.php");
       }
       ?>
       <div class="container-fluid text-white text-center" id="footer" style="background:#7373B9">
@@ -76,14 +75,9 @@ include_once ("base.php");
           </div>
         </div>
       </div>
-    <script>
-      $(window).on("load", function(){
-        $("#loading").fadeOut(100, function(){
-          $("#content").fadeIn();
-          $("#footer").fadeIn();
-          new WOW().init();
-        })
-      })
-    </script>
+      <script>
+        $("#content").show();
+        $("#footer").show();
+      </script>
 </body>
 </html>
