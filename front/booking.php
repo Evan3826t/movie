@@ -30,7 +30,14 @@
 </style>
 <?php
 include_once ("../base.php");
-
+if(empty($_SESSION['user'])){
+    ?>
+        <div class="col-12  my-4 text-white text-center">
+            <button class="btn btn-dark order" onclick="lof('?do=login')">請先登入</button>
+        </div>
+    <?php
+    exit();
+}
 $movie = find("movie",$_GET['id'])['name'];
 $date = $_GET['date'];
 $session = $_GET['session'];

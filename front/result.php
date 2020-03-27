@@ -9,6 +9,7 @@ $data['session'] = $_GET['session'];
 $data['no'] = date("Ymd").rand(1,9999);
 // $date['no'] = date("Ymd").sprintf("%04d",q('select max(id)+1 from ord')[0][0]);
 
+// 存入訂單
 save("ord",$data);
 
 
