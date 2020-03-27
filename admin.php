@@ -36,35 +36,35 @@ include_once ("base.php");
                   <a class="nav-link text-white" href="?do=movie">電影</a>
                 </li>
               </ul>
-              <?php
-              if(empty($_SESSION['user'])){
-               ?>
-                <button class="btn btn-outline-success bg-dark" onclick="lof('?do=login')">登入</button>
-               <?php
-              }else{
-                if($_SESSION['user'] == "admin"){
-                  ?>
-                    <button class="btn btn-outline-success bg-dark" onclick="lof('admin.php')">管理</button>
-                  <?php
-                }
-                ?>
-                    <button class="btn btn-outline-success bg-dark" onclick="lof('./api/logout.php')">登出</button>
-                  <?php
-              }
-              ?>
+                <button class="btn btn-outline-success bg-dark" onclick="lof('index.php')">首頁</button>
+                <button class="btn btn-outline-success bg-dark" onclick="lof('./api/logout.php')">登出</button>
             </div>
         </div>
       </nav>
+      <div class="container mb-5 rounded" id="content" style="background:#7373B9">
+      <div class="row mt-5" >
+            <div class="col-12 col-md-4 my-4 text-white text-center" id="menu">
+              <button class="btn btn-dark m-5" onclick="lof('?do=user')"><h1>會員管理</h1></button>
+              <button class="btn btn-dark m-5" onclick="lof('?do=poster')"><h1>輪播管理</h1></button>
+              <button class="btn btn-dark m-5" onclick="lof('?do=movie')"><h1>電影管理</h1></button>
+              <button class="btn btn-dark m-5" onclick="lof('?do=order')"><h1>訂單管理</h1></button>
+            </div>
+            <div class="col-12 col-md-8 my-4 text-white text-center">
+                <?php
+                $do = (empty($_GET['do']))?"user":$_GET['do'];
+                $path = "./admin/" . $do . ".php";
+                if(file_exists($path)){
+                  include ($path);
+                }else{
+                  include ("./admin/user.php");
+                }
+                ?>
+            </div>
+            
+        </div>
       
-      <?php
-      $do = (empty($_GET['do']))?"home":$_GET['do'];
-      $path = "./admin/" . $do . ".php";
-      if(file_exists($path)){
-        include ($path);
-      }else{
-        include ("./admin/home.php");
-      }
-      ?>
+      </div>
+
       <div class="container-fluid text-white text-center" id="footer" style="background:#7373B9">
         <div class="row">
           <div class="col-12" >

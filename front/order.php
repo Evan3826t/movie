@@ -46,7 +46,6 @@ $movie=find("movie",$id);
     <script>
       $(window).on("load", function(){
         $("#content").show();
-        $("#footer").show();
 
         let url = new URL(location.href);
         let id = url.searchParams.get('id');
