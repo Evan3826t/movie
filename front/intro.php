@@ -8,7 +8,7 @@ $movie=find("movie",$id);
             <div class="col-12 my-3 text-white">
               <a href="index.php" class="text-white">首頁</a>
               >
-              <a href="movie" class="text-white">電影</a>
+              <a href="?do=movie" class="text-white">電影</a>
               >
               <?=$movie['name']?>
             </div>

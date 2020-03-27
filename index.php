@@ -34,7 +34,7 @@ include_once ("base.php");
                   <a class="nav-link text-white" href="index.php">首頁<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="./movie.php">電影</a>
+                  <a class="nav-link text-white" href="?do=movie">電影</a>
                 </li>
               </ul>
               <button class="btn btn-outline-success bg-dark" onclick="lof('?do=login')">登入</button>
