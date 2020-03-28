@@ -1,23 +1,9 @@
 <style>
-.room{
-    width: 900px;
-    height: 555px;
-    margin: auto;
-    background: url("./icon/123.png") no-repeat;
-    display:flex;
-    flex-wrap: wrap;
-    align-content: end;
-    padding: 17px 110px;
-    box-sizing: border-box;
-}
 
 .seat{
-    width: 120px;
     height: 129px;
-    position: relative;
 }
 .chk{
-    position: absolute;
     bottom: 5px;
     right: 5px;
 }
@@ -52,21 +38,26 @@ foreach ($orders as $o) {
 }
 ?>
 <div class="room">
+    <div class="row text-white ">
     <?php
-    for($i = 0; $i < 20; $i++){
+    for($i = 0; $i < 24; $i++){
         if(in_array($i,$merge)){
-            echo "<div class='seat pick'>";
+            echo "<div class='seat pick col-12 col-md-2'>";
+            echo "<div class='ct'>".(floor($i/6)+1)."排".(($i%6)+1)."號</div>";
+
         }else{
-            echo "<div class='seat null'>";
-            echo "<input type='checkbox' class='chk' value='$i'>";
+            echo "<div class='seat null col-12 col-md-2'>";
+            echo "<div class='ct'>".(floor($i/6)+1)."排".(($i%6)+1)."號</div>";
+
+            echo "<input type='checkbox' class='chk'  value='$i'>";
         }
-        echo "<div class='ct'>".(floor($i/5)+1)."排".(($i%5)+1)."號</div>";
         echo "</div>";
 
     }
     ?>
 </div>
-<div class=" row">
+</div>
+<div class="row">
     <div class="col-12 col-md-4 my-4 text-white text-center">
         <h3>您選擇的電影是: <br> <?=$movie?></h3>
     </div>
@@ -79,8 +70,6 @@ foreach ($orders as $o) {
     <div class="col-12  my-4 text-white text-center">
         <button class="btn btn-dark order">訂購</button>
     </div>
-    
-    
 </div>
 
 <script>

@@ -2,30 +2,30 @@
 $div=9;
 $now=(empty($_GET['p']))?1:$_GET['p'];
 $start=($now-1)*$div;
-$total=nums("movie");
+$total=nums("ord");
 $page=ceil($total/$div);
-$movies=all("movie",[]," limit $start,$div");
+$orders=all("ord",[]," limit $start,$div");
 ?>
 <table class="table table-striped table-dark">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">電影名稱</th>
-      <th scope="col">導演</th>
+      <th scope="col">訂單編號</th>
+      <th scope="col">帳號</th>
       <th scope="col">刪除</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    foreach ($movies as $k => $m) {
+    foreach ($orders as $k => $o) {
         ?>
         <tr>
             <th scope="row"><?=$k+1?></th>
-            <td><?=$m['name']?></td>
-            <td><?=$m['dir']?></td>
+            <td><?=$o['no']?></td>
+            <td><?=$o['user']?></td>
             <td>
-              <button class="btn btn-danger mr-1 detail" data-date="<?=$m['ondate']?>" data-main="<?=$m['main']?>" data-img="<?=$m['poster']?>">詳細資料</button>
-              <button class="btn btn-danger" onclick="del('movie',<?=$m['id']?>)">刪除</button>
+              <button class="btn btn-danger mr-1 detail" data-movie="<?=$o['movie']?>" data-date="<?=$o['date'] . "　" . $o['session']?>">詳細資料</button>
+              <button class="btn btn-danger" onclick="del('ord',<?=$o['id']?>)">刪除</button>
             </td>
         </tr>
         <?php
@@ -58,16 +58,15 @@ $movies=all("movie",[]," limit $start,$div");
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-          <img src=""  alt="" class="w-80">
+      <div class="modal-body text-left">
           <h6>
-            導演：<span></span>
+            帳號：<span></span>
           </h6>
           <h6>
-            上映日期：<span></span>
+            電影：<span></span>
           </h6>
           <h6>
-            主要演員：<span></span>
+            日期場次：<span></span>
           </h6>
       </div>
       <div class="modal-footer">
@@ -83,23 +82,18 @@ $movies=all("movie",[]," limit $start,$div");
     $("#modal .modal-title").text(title);
     console.log(title);
 
-    let dir = $(this).parents("tr").find("td").eq(1).text();
-    $("#modal .modal-body span").eq(0).text(dir);
-    console.log(dir);
+    let name = $(this).parents("tr").find("td").eq(1).text();
+    $("#modal .modal-body span").eq(0).text(name);
+    console.log(name);
+
+    let movie = $(this).data('movie');
+    $("#modal .modal-body span").eq(1).text(movie);
+    console.log(movie);
 
     let date = $(this).data('date');
-    $("#modal .modal-body span").eq(1).text(date);
+    $("#modal .modal-body span").eq(2).text(date);
     console.log(date);
 
-    let main = $(this).data('main');
-    $("#modal .modal-body span").eq(2).text(main);
-    console.log(main);
-
-    // 把圖片路徑藏在 button 裡面
-    let img = "./images/"+$(this).data("img")+".jpg";
-    console.log(img);
-
-    $("#modal .modal-body img").attr("src",img);
     $("#modal").modal("show");
     
   })

@@ -69,7 +69,6 @@ body{
         display: none;
     }
     .table tbody td:before{
-        content: attr(data-th) ":";
         color: var(--primary);
         font-weight: bold;
     }
