@@ -24,6 +24,7 @@ if(empty($_SESSION['user'])){
     <?php
     exit();
 }
+
 $movie = find("movie",$_GET['id'])['name'];
 $date = $_GET['date'];
 $session = $_GET['session'];
@@ -41,6 +42,7 @@ foreach ($orders as $o) {
     <div class="row text-white ">
     <?php
     for($i = 0; $i < 24; $i++){
+        // 抓出已被訂走的座位
         if(in_array($i,$merge)){
             echo "<div class='seat pick col-12 col-md-2'>";
             echo "<div class='ct'>".(floor($i/6)+1)."排".(($i%6)+1)."號</div>";
@@ -75,14 +77,15 @@ foreach ($orders as $o) {
 <script>
 let num = 0;
 let seat = [];
-// let seat = new Array();
+// 註冊勾選框點擊事件
 $(".chk").on("click",function(){
     let chk = $(this).prop("checked");
     if(chk){
         if(num < 4){
             num++;
             seat.push($(this).val());
-            // 下兩行可以不用做
+
+            // 點選時換圖片
             $(this).parent().removeClass("null");
             $(this).parent().addClass("pick");
         }else{
@@ -92,7 +95,8 @@ $(".chk").on("click",function(){
     }else{
         num--;
         seat.splice(seat.indexOf($(this).val(),1));
-        // 下兩行可以不用做
+
+        // 點選時換圖片
         $(this).parent().addClass("null");
         $(this).parent().removeClass("pick");
     }
@@ -100,10 +104,7 @@ $(".chk").on("click",function(){
     $(".ticket").text(num);
 })
 
-$(".pre").on("click",function(){
-    $("form").show();
-    $(".load").html("");
-})
+// 註冊訂購點擊事件
 $(".order").on("click",function(){
     let result = {"seat":seat,
                   "movie":"<?=$movie;?>",

@@ -1,5 +1,7 @@
 <?php
+// 每頁筆數
 $div=9;
+// 現在頁數
 $now=(empty($_GET['p']))?1:$_GET['p'];
 $start=($now-1)*$div;
 $total=nums("poster");
@@ -26,8 +28,20 @@ $poster=all("poster",[]," order by rank limit $start,$div");
           <th scope="row"><?=$k+1?></th>
           <td><?=$p['title']?></td>
           <td>
-            <button class="btn btn-danger mr-1" onclick="sw('poster',<?=$p['id']?>,<?=$pre?>)">往上</button>
-            <button class="btn btn-danger mr-1" onclick="sw('poster',<?=$p['id']?>,<?=$next?>)">往下</button>
+            <?php
+            // 第一筆資料資料不顯示往上
+            if($k!=0){
+              ?>
+              <button class="btn btn-danger mr-1" onclick="sw('poster',<?=$p['id']?>,<?=$pre?>)">往上</button>
+              <?php
+            }
+            // 最後一筆資料不顯示往下
+            if($k<(count($poster)-1)){
+              ?>
+              <button class="btn btn-danger mr-1" onclick="sw('poster',<?=$p['id']?>,<?=$next?>)">往下</button>
+              <?php
+            }
+            ?>
 
           </td>
           <td>
@@ -42,6 +56,7 @@ $poster=all("poster",[]," order by rank limit $start,$div");
   </tbody>
 </table>
 <div class="text-center">
+    <!-- 分頁 -->
     <?php
     if($now-1 > 0){
       echo "<a class='text-white' href='?do=movie&p=". ($now-1) ."'> < </a>";
@@ -74,6 +89,8 @@ $poster=all("poster",[]," order by rank limit $start,$div");
     </div>
   </div>
 </div>
+
+
 <form action="./api/addposter.php" method="post" enctype="multipart/form-data">
   <div id="modalAdd" class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -111,8 +128,9 @@ $poster=all("poster",[]," order by rank limit $start,$div");
     $("#modal").modal("show");
     
   })
+
+  // 註冊新增按鈕
   $("#add").on("click",function(){
     $("#modalAdd").modal("show");
-
   })
 </script>

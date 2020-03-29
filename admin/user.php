@@ -1,5 +1,7 @@
 <?php
+// 每頁筆數
 $div=9;
+// 現在頁數
 $now=(empty($_GET['p']))?1:$_GET['p'];
 $start=($now-1)*$div;
 $total=nums("m_user");
@@ -43,6 +45,7 @@ $members=all("m_user",[]," limit $start,$div");
   </tbody>
 </table>
 <div class="text-center">
+<!-- 分頁 -->
     <?php
     if($now-1 > 0){
       echo "<a class='text-white' href='?do=user&p=". ($now-1) ."'> < </a>";

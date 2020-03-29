@@ -32,7 +32,7 @@ foreach ($await as $k => $m) {
             <h5 class="card-title"><?=$m['name']?></h5>
             <h6 class="card-subtitle mb-2 text-nuted">電影長度</h6>
             <p class="card-text"><?=$m['len']?>分</p>
-            <a href="?do=intro&id=<?=$m['id']?>&type=0" class="btn btn-primary">尚未上映</a>
+            <a href="?do=intro&id=<?=$m['id']?>&type=0" class="btn btn-secondary">尚未上映</a>
           </div>
         </div>
     </div>

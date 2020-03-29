@@ -2,6 +2,8 @@
 include_once ("../base.php");
 
 $today = date("Y-m-d");
+
+// 未上映電影
 $sql = "select * from movie where ondate > '$today' order by rank";
 $movies = q($sql);
 foreach ($movies as $k => $m) {
