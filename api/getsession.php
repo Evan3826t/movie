@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Taipei");
 $id = $_GET['id'];
 $date = $_GET['date'];
 $movie = find("movie",$id)['name'];
-
+pre($movie);
 $today = date("Y-m-d");
 $now = date("H");
 
@@ -25,7 +25,10 @@ if( $date == $today){
 }
 */
 $start = ($date == $today && $now >= 14)?floor(($now-10)/2):1;
-
+pre($start);
+if($start >5){
+    echo "<option value='none'>今日已售罄</option>";
+}
 for($i=$start;$i<=5;$i++){
 
     $qt=q("SELECT sum(qt) FROM ord WHERE movie='$movie' && date='$date' && session='".$sess[$i]."'")[0][0];

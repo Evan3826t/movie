@@ -45,7 +45,7 @@ $movie=find("movie",$id);
 
     <script>
       $(window).on("load", function(){
-        $("#content").show();
+        $("#footer").hide();
 
         let url = new URL(location.href);
         let id = url.searchParams.get('id');
@@ -66,6 +66,9 @@ $movie=find("movie",$id);
           $.get("./api/getsession.php",{date,id},function(session){
               $("#session").html(session);
               console.log(session)
+              if($("#session").val()=="none"){
+                $("#send").attr("disabled",true);
+              }
           })
         }
 
