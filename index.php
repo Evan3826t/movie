@@ -12,7 +12,7 @@ include_once ("base.php");
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/all.css">
     <link rel="stylesheet" href="./css/animate.css">
-    <link rel="shortcut icon" href="./images/favicon-20191209083958255.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./icon/favicon-20200328125613967.ico" type="image/x-icon">
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/wow.min.js"></script>
@@ -78,11 +78,10 @@ include_once ("base.php");
       </div>
     <script>
       $(window).on("load", function(){
-        $("#loading").fadeOut(100, function(){
+
           $("#content").fadeIn();
           $("#footer").fadeIn();
           new WOW().init();
-        })
       })
     </script>
 </body>

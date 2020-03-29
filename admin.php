@@ -12,7 +12,7 @@ include_once ("base.php");
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/all.css">
     <link rel="stylesheet" href="./css/animate.css">
-    <link rel="shortcut icon" href="./images/favicon-20191209083958255.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./icon/favicon-20200328125613967.ico" type="image/x-icon">
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/all.js"></script>
@@ -29,12 +29,6 @@ include_once ("base.php");
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link text-white" href="index.php">首頁<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="?do=movie">電影</a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="?do=user">會員管理</a>
                 </li>

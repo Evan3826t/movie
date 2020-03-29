@@ -12,7 +12,7 @@ $movies=all("movie",[]," limit $start,$div");
       <th scope="col">#</th>
       <th scope="col">電影名稱</th>
       <th scope="col">導演</th>
-      <th scope="col">刪除</th>
+      <th scope="col">操作</th>
     </tr>
   </thead>
   <tbody>

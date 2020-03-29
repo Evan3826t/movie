@@ -12,7 +12,7 @@ $orders=all("ord",[]," limit $start,$div");
       <th scope="col">#</th>
       <th scope="col">訂單編號</th>
       <th scope="col">帳號</th>
-      <th scope="col">刪除</th>
+      <th scope="col">操作</th>
     </tr>
   </thead>
   <tbody>

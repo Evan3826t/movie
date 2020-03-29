@@ -1,22 +1,30 @@
-<div class="container-fluid" id="loading">
-        <div class="row h-100">
-          <div class="col-12 align-self-center text-center">
-            <img src="./images/loading.svg" alt="">
-          </div>
-        </div>
-      </div>
-
     <div class="container" id="content">
         <div class="row zoomInDown wow">
             <div class="col-12 my-3">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img src="./images/ad.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="./images/ad1.jpg" class="d-block w-100" alt="...">
-                              </div>
+
+                            <?php
+                            $poster=all("poster",[]," order by rank");
+                            foreach ($poster as $k => $p) {
+                                if($p['rank'] == 1){
+                                    ?>
+                                    <div class="carousel-item active">
+                                        <img src="./images/<?=$p['src']?>" class="d-block w-100" alt="...">
+                                    </div>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <div class="carousel-item">
+                                        <img src="./images/<?=$p['src']?>" class="d-block w-100" alt="...">
+                                    </div>
+                                    <?php
+                                }
+                               
+                            }
+                            ?>
+                              
+                             
 
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -83,7 +91,6 @@
             })
         })
         getMovie();
-        console.log($("#movie").val());
 
         // 抓上映中的電影
         function getMovie(){
@@ -101,7 +108,6 @@
                     id =$("#movie").val();
                 }
                 getDate(id);
-                console.log(movie);
             })
         }
         
